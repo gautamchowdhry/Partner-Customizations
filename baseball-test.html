@@ -1,0 +1,49 @@
+<script type="text/javascript" src="http://svite-league-apps-static-stg.s3.amazonaws.com/_s/jquery.js?v=930-1513-3741"></script> 
+<script>
+$(document).ready(function() {  
+ 
+      var headers = {
+              'accept': 'application/json',
+              'x-api-key': '66adef703fba6fc440299b7573f61d49'
+              };
+                          
+              
+            $.ajax('http://api.leagueapps.com/v1/sites/8597/programs/current?callback=cBack', {
+              dataType: 'jsonp',
+              headers: headers
+            }).done(function (data) {
+            
+        
+                var tourney = data.filter(function(x) { return x.type == 'TOURNAMENT' });
+                for (var i = 0, len = data.length; i < len; i++) {
+                  var prog = data[i];    
+                  console.log(prog.name);
+                  }                                                         
+
+                     
+                
+               
+                $('#content').append(filterHTML); 
+                          
+                
+              }).fail(function (data) {
+                document.write('ERROR!' + data.responseText);          
+              });
+              
+      
+ 
+ });
+ 
+ 
+ function cback()
+ {
+ alert('Hello World');
+ }
+                                                        
+</script>
+
+<div id="content">
+
+<p>Hello World
+
+<div>
