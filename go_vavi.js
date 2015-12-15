@@ -8,6 +8,14 @@ $(document).ready(function() {
       $('.late-price .tag').text('Regular');
                      
                      
+                     
+      if(url.indexOf('/editProfile') > -1){          
+          // make history field readonly
+          $("input[name='prop_335858']").attr('readOnly', true);
+          $("input[name='prop_335858']").attr("style", "background: #CCC; color: #333;border: 1px solid #666")         
+         }
+                 
+                  
       if(url.indexOf('/registrationListingsContent') > -1){ 
           //if mobile
          if(screen.width <= 800){  

@@ -9,8 +9,8 @@ $(document).ready(function() {
          if($('#is-mobile').length){
          // mobile
          
-                  var html = '<img src="http://files.staticleagueapps.com/partners/austin-ssc/Ski-Mobile-LA.jpg" border="0"/>';
-         html =  '<a href="http://austinssc.com/ski-trip" target="_blank">' + html + '</a>';
+                  var html = '<img src="http://files.staticleagueapps.com/partners/austin-ssc/LeagueApps-NYE-mobile.jpg" border="0"/>';
+         html =  '<a href="http://austinssc.com/social-events/new-years-eve" target="_blank">' + html + '</a>';
              
            $('[role="main"]').prepend(html);
              
@@ -18,9 +18,9 @@ $(document).ready(function() {
           else {
               //desktop
               
-            var html = '<div style="margin:0 20px 30px 30px"><img src="http://files.staticleagueapps.com/partners/austin-ssc/Ski-Desktop-LA.jpg" border="0"/>';
-         html =  '<a href="http://austinssc.com/ski-trip" target="_blank">' + html + '</a></div>';
-               $('#page-title').before(html);                             
+            var html = '<div style="margin:0 20px 30px 30px"><img src="http://files.staticleagueapps.com/partners/austin-ssc/LeagueApps-NYE-desktop.jpg" border="0"/>';
+         html =  '<a href="http://austinssc.com/social-events/new-years-eve" target="_blank">' + html + '</a></div>';
+               $('.main').prepend(html);                             
           }
          
           

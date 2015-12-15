@@ -23,18 +23,32 @@
             var regCount = 0;
             for (var i = 0, len = data.length; i < len; i++) {
               var reg = data[i];                            
-              if (reg.programState != 'COMPLETED' && reg.userType == 'CHILD') {                
+              if (reg.programState != 'COMPLETED' && reg.userType == 'CHILD' &&  reg.programType == 'CLUBTEAM') {                
                 regCount++;                
               }
            }
-
-           // 2nd child and higher
-            if (regCount >= 1) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $100 </strong> on this registration.'
-              $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('sibling2016');
-              $("#discountCode").attr('readonly', true);
-              $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
+           
+              var pageTitle = ''
+            if($('#is-mobile').length){
+               // mobile
+               pageTitle = $('#up-front-payment-details').text();
+            }     
+            else {
+                //desktop
+                pageTitle = $('[data-id="reg-terms"]').text();
+            }
+           
+           
+           
+          if (pageTitle.toLowerCase().indexOf("club") > -1) {
+             // 2nd child and higher
+              if (regCount >= 1) {
+                var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $100 </strong> on this registration.'
+                $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
+                $('#discountCode').val('sibling2016');
+                $("#discountCode").attr('readonly', true);
+                $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
+              }
             }
            
             
