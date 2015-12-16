@@ -15,6 +15,16 @@ $(document).ready(function() {
         $(this).after('<br/><br/><a href="' + link + '" class="btn">Invite Players</a>');
         
         });
+        
+        
+      //update You owe program dues;  
+      $('#ga-members-table td:nth-child(5)').each(function() {           
+          var txt = $(this).find("strong").first().text();
+          if (txt != null && txt.indexOf('program dues') > -1) {
+            $(this).find("strong").first().text('You owe registration fees;')
+            }
+        });
+      
           
    }
 
@@ -38,6 +48,15 @@ $(document).ready(function() {
           
     
       } 
+      
+  if(url.indexOf('/registration') > -1){
+  
+      $('small:contains(" please enter your mobile phone number here")').text('Your phone number must be entered with numbers only - no dashes, spaces or special characters.  Please note standard messaging or data rates may apply.');
+            
+    }
+    
+
+  
 
 
 
