@@ -3,12 +3,28 @@ $(document).ready(function() {
   var url = $(location).attr('href');  
   
   
-  if(url.indexOf('/purchase') > -1 && url.indexOf('bid=40740') > -1){  
+  if(url.indexOf('/purchase') > -1){  
   
       //hide add another buttons
        $('#another').hide();
        $('.light').hide();
   }
+  
+    if(url.indexOf('/dashboard') > -1){  
+  
+    // Change URL to go directly to Add Player page instead of Team Profile
+    var link;
+       
+   $('[data-id="user-dash-staff-activities"]').parent().next().find('table').find("a[href*='/teams/']").each(function() {  
+        link = $(this).attr('href');
+        link = link.replace('teams/', 'teamInvite?teamId=') ;
+        
+        
+        $(this).after('<br/><br/><a href="' + link + '" class="btn">Invite Players</a>');
+        
+        });
+      
+   }
 
 
   if(url.indexOf('/registration') > -1){  
