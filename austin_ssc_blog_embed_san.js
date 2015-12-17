@@ -30,7 +30,7 @@ $(document).ready(function() {
          // new link: http://austinssc.com/category/headline/headline/
          // old link: http://www.ssccitychallenge.com/category/
          
-         var RSS_Link = 'http://austinssc.com/category/headline/headline/' + sportTag + '/feed';
+         var RSS_Link = 'http://sanantoniossc.com/headlines/headline/' + sportTag + '/feed';
           console.log(decodeURIComponent('http://ajax.googleapis.com/ajax/services/feed/load?v=1.0&num=10&callback=?&q=' + encodeURIComponent(RSS_Link)));
   
          var blogContent = '';
