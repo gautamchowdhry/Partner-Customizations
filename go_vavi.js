@@ -6,8 +6,20 @@ $(document).ready(function() {
       $('.early-bird-price .tag').text('Super Early Bird');
       $('.regular-price .tag').text('Early Bird');
       $('.late-price .tag').text('Regular');
-                     
-                     
+      
+      $('.program-list-registration-dates .tag').each(function( index ) {
+           var txt = $(this).text();
+           if(txt.indexOf('early bird') > -1){ 
+              $(this).text('super early bird');
+           }
+           if(txt.indexOf('regular') > -1){ 
+              $(this).text('early bird');
+           }
+           if(txt.indexOf('late') > -1){ 
+              $(this).text('regular');
+           }
+       });              
+                             
                      
       if(url.indexOf('/editProfile') > -1){          
           // make history field readonly
