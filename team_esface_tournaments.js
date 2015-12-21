@@ -79,7 +79,7 @@
             }
            
               // 6th and higher
-            if (regCount => 5) {
+            if (regCount >= 5) {
                 var newText = 'Congratulations. You qualify for our <strong>multi team discount</strong>.  You\'ll <strong>save $150</strong> on this registration.'
               $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
               $('#discountCode').val('tournamentdiscount6teams');
