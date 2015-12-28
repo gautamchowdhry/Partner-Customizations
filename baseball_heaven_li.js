@@ -106,15 +106,20 @@ $(document).ready(function() {
       $('[data-id="Players"]').hide();
       $('[data-id="program-participants"]').hide();
       
+      $('[data-id="Teams"]').hide();
+     
+      $('[data-id="Tournament Profile"]').after('<li><a href="/pages/teams" target="_blank">Teams</a></li>')
+      
       
       // update Teams tab to link to custom page      
-       var tlink =  $('[data-id="Teams"]').find('a').attr('href')
-       var id = tlink.split('/tournaments/')[1].split('/teams')[0];
-       if (id != null) {
-          $('[data-id="Teams"]').find('a').attr('href', '/pages/teams?tid=' + id)
-          $('[data-id="Teams"]').find('a').attr('target', '_blank')
+      // var tlink =  $('[data-id="Teams"]').find('a').attr('href')
+      // var id = tlink.split('/tournaments/')[1].split('/teams')[0];
+      // if (id != null) {
+      //    //$('[data-id="Teams"]').find('a').attr('href', '/pages/teams?tid=' + id)
+      //   $('[data-id="Teams"]').find('a').attr('href', '/pages/teams')
+      //  $('[data-id="Teams"]').find('a').attr('target', '_blank')
           
-       }
+       //}
    }
   
 
