@@ -84,33 +84,43 @@ $(document).ready(function() {
       
    // tournament listings page
    if(url.indexOf('/tournaments') > -1 && url.indexOf('/tournaments/') == -1){  
-      console.log('listings');
+      //console.log('listings');
       // remove number from program listings 
-      $(".base-meta").find('h2').find('a').text(function(i, text) {
-        console.log(text);
-        if (text.indexOf('.') > -1 ) {
-          return text.slice(4);
-          }
-    });
+      //$(".base-meta").find('h2').find('a').text(function(i, text) {
+      //  console.log(text);
+      //  if (text.indexOf('.') > -1 ) {
+      //    return text.slice(4);
+      //    }
+    // });
    }
    
     if(url.indexOf('/tournaments/') > -1){       
-      console.log('detail');
-      var txt = $('[data-id="program-title"]').html();
-      if (txt != null && txt.indexOf('.') > -1 ) {
-        txt = txt.substr(10,txt.length);  //not sure why 10 is the start point, seems like bunch of hidden character or spaces in the html - 4 did not work. 
-        $('[data-id="program-title"]').html(txt);
+     console.log('detail');
+     // var txt = $('[data-id="program-title"]').html();
+     // if (txt != null && txt.indexOf('.') > -1 ) {
+     //   txt = txt.substr(10,txt.length);  //not sure why 10 is the start point, seems like bunch of hidden character or spaces in the html - 4 did not work. 
+     //   $('[data-id="program-title"]').html(txt);
         
-       }            
+     //  }            
          
       $('[data-id="Players"]').hide();
       $('[data-id="program-participants"]').hide();
       
       $('[data-id="Teams"]').hide();
      
-      $('[data-id="Tournament Profile"]').after('<li><a href="/pages/teams" target="_blank">Teams</a></li>')
+      var tournament_id = $('html').attr('id');
+      tournament_id= tournament_id.split('_tournaments_')[1]
+      console.log(tournament_id);
+      tournament_id = tournament_id.split('-')[0];
+      console.log(tournament_id);
       
+      $('[data-id="Tournament Profile"]').after('<li><a id="team-link" href="/pages/teams" target="_blank">Teams</a></li>')
       
+      if (tournament_id != null) {        
+         //$('#team-link').attr('href').append('&tid=' + tournament_id);                
+      }
+      
+           
       // update Teams tab to link to custom page      
       // var tlink =  $('[data-id="Teams"]').find('a').attr('href')
       // var id = tlink.split('/tournaments/')[1].split('/teams')[0];
@@ -120,6 +130,10 @@ $(document).ready(function() {
       //  $('[data-id="Teams"]').find('a').attr('target', '_blank')
           
        //}
+       
+       
+       
+       
    }
   
 
