@@ -7,7 +7,7 @@
       if (user_id) {
         var headers = {
           'accept': 'application/json',
-          'x-api-key': 'dfd386128b90cea561c9335910e117b8'
+          'x-api-key': '8bb454a1e7b50874a7a4e4d8fcc7ae28'
           };
 
         var site_name = $('#lapi-site-name').val();
@@ -16,7 +16,7 @@
       
         $.ajax(site_url + '/users/' + user_id + '/registrations', {
           dataType: 'json',
-          cache: false, 
+          cache:false,
           headers: headers
         }).done(function (data) {
         
@@ -28,20 +28,11 @@
               }
            }
 
-            //2nd reg
-            if (regCount == 1) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save 50%</strong> on this registration.'
+           // 2nd child and higher
+            if (regCount >= 1) {
+              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $25 </strong> on this registration.'
               $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('Kelsosibdiscount2');
-              $("#discountCode").attr('readonly', true);
-              $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
-            }
-            
-              //3rd or higher
-              if (regCount >= 2) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save 80%</strong> on this registration.'
-              $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('Kelsosibdiscount3');
+              $('#discountCode').val('sibling!');
               $("#discountCode").attr('readonly', true);
               $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
             }
@@ -62,4 +53,6 @@
 
 
 });
+
+
 
