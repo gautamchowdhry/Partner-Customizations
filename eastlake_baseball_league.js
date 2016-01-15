@@ -45,11 +45,20 @@
             
             if (pageTitle.toLowerCase().indexOf("league") > -1) {
             
-                if (regCount >= 1) {
+                if (regCount == 1) {
                
                   var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save 25%</strong> on this registration.'
                   $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
                   $('#discountCode').val('SiblingDiscount2016');
+                  $("#discountCode").attr('readonly', true);
+                  $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
+                }
+                
+                 if (regCount >= 2) {
+               
+                  var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  This registration is free.'
+                  $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
+                  $('#discountCode').val('FamilyMax150');
                   $("#discountCode").attr('readonly', true);
                   $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
                 }
