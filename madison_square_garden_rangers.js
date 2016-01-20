@@ -26,7 +26,20 @@ $(document).ready(function() {
    
     if(url.indexOf('/products') > -1){                    
      // lunch options     
-     $('#product-details').html('<p><b>Fee for Optional Lunch Benefit</b><br/>A $75.00 per camper per week fee covers cost of lunch each day (5 days) of camp. If you have not registered for the Weekly Meal Option it can be added by emailing our offices at <b>youth.hockey@msg.com</b>. The $75.00 per camper per week fee will be automatically added to your final tuition amount. All payments of Lunch Option are final. <br/><br/><b>Sample Menu</b><br/>Below is a sample menu of food offered through the lunch Weekly Meal Option. The sample menu is broken into days and represents possible food choices offered throughout the week. Each day your child will be offered a wide array of choice encompassing the seven food categories listed on the left side of menu. </p><img src="//files.staticleagueapps.com/partners/msg/new-rangers-sample-menu.png">');
+     var prod_txt = '<p><b>Fee for Optional Lunch Benefit</b><br/>A $75.00 per camper per week fee covers cost of lunch each day (5 days) of camp. If you have not registered for the Weekly Meal Option it can be added by emailing our offices at <b>youth.hockey@msg.com</b>. The $75.00 per camper per week fee will be automatically added to your final tuition amount. All payments of Lunch Option are final. <br/><br/><b>Sample Menu</b><br/>Below is a sample menu of food offered through the lunch Weekly Meal Option. The sample menu is broken into days and represents possible food choices offered throughout the week. Each day your child will be offered a wide array of choice encompassing the seven food categories listed on the left side of menu. </p><img src="//files.staticleagueapps.com/partners/msg/new-rangers-sample-menu.png">'
+     
+     
+      if($('#is-mobile').length){          
+        $('[data-id="products-title"]').after('<p>' + prod_txt + '</p>');        
+      }  
+      else {
+        $('#product-details').html(prod_txt);
+      }
+      
+     
+     
+     $('[data-id="prod-qty"]').hide();
+     
      }
      
      
@@ -46,7 +59,7 @@ $(document).ready(function() {
       $('[data-id="waiver"]').find('h2').text('Acknowledgment & Release');    
       
       $('[data-id="discount-code"]').text('Chase Discount');
-      $('[data-id="discount-code"]').after('<img src="//files.staticleagueapps.com/partners/msg/chase-rangers.jpg"/><br/><span class="microcopy full">Secure your child\'s 2016 Youth Hockey Camp spot with your Chase Credit or Debit Card and receive a $50 discount off admission & a limited edition Camp apparel item. Not a Chase Cardmember? Go to <a href="chase.com/msg" target="_blank">chase.com/msg</a> to find the card that\'s right for you.</span><br/>')     
+      $('[data-id="discount-code"]').after('<img src="//files.staticleagueapps.com/partners/msg/chase-rangers.jpg"/><br/><span class="microcopy full">Secure your child\'s 2016 Youth Hockey Camp spot with your Chase Credit or Debit Card and receive a $50 discount off admission & a limited edition Camp apparel item. Not a Chase Cardmember? Go to <a href="http://chase.com/msg" target="_blank">chase.com/msg</a> to find the card that\'s right for you.</span><br/>')     
       $('[data-id="discount-text"]').find('small').html('Please enter the first six digits of your <b>Chase credit card</b> to receive your discount.<br/><img src="//files.staticleagueapps.com/partners/msg/credit-card.png"/>');  
  
    }

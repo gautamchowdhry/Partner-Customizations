@@ -12,6 +12,19 @@ $(window).load(function(){
 $(document).ready(function() {  
   var url = $(location).attr('href');  
   
+  // Custom Listings
+  if(url.indexOf('/camps') > -1 && url.indexOf('/camps/') == -1){       
+    formatListing();
+  }
+  
+  if(url.indexOf('/events') > -1 && url.indexOf('/events/') == -1){       
+    formatListing();    
+  }
+ 
+  if(url.indexOf('/tournaments') > -1 && url.indexOf('/tournaments/') == -1){       
+    formatListing();    
+  }
+  
   
   //update league details page
   if(url.indexOf('/camps/') > -1){                       
@@ -25,7 +38,7 @@ $(document).ready(function() {
       if (txt != null) {   
         txt = txt.replace('Event', 'Clinic'); 
         $('[data-id="Event Profile"]').html(txt);
-      }
+      }   
     }
 
  
@@ -66,3 +79,44 @@ $(document).ready(function() {
       
 
 });
+
+
+function formatListing(){
+ // Hide all details
+     $('.program-list-starts').hide();
+     $('.program-list-ends').hide();     
+     $('.program-list-registration-dates').hide();
+     $('.program-list-starts').hide();
+     $('.base-meta').find('p').hide();          
+     
+     // Create Location and Price in one line for standard program   
+     $("[id^='baseevent-']").each(function(index) {        
+        
+         $(this).find('.program-list-location').hide();
+         var location = $(this).find('dd.program-list-location').html();
+         var price = $(this).find('.regular-price').html();
+         //console.log(location);
+         //console.log(price);
+         
+         if (location != null) {
+          $(this).find('h2').after('<div><b class="tag">Location</b>' + location + '&nbsp;&nbsp;<b class="tag">Price</b>' + price+'</div>');
+          $(this).find('.tag:contains("Regular")').hide();
+         }
+        
+      });
+      
+      // Create Location and Price in one line for grouped program   
+     $(".sub--listing").find('li').each(function(index) {        
+         console.log('Hi');
+         var location = $(this).find('dd.program-list-location').html();
+         var price = $(this).find('.individual-price').text();
+         //console.log(location);
+         //console.log(price);
+         
+         if (location != null) {
+          $(this).find('h2').after('<p><b class="tag">Location</b>' + location + '&nbsp;&nbsp;<b class="tag">Price</b>' + price);
+         }
+        
+      });
+      
+}

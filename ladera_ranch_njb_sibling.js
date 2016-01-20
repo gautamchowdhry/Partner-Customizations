@@ -30,7 +30,7 @@
 
            // 2nd child and higher
             if (regCount >= 1) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save 25% </strong> on this registration.'
+              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $25 </strong> on this registration.'
               $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
               $('#discountCode').val('DISC-LADE70');
               $("#discountCode").attr('readonly', true);
