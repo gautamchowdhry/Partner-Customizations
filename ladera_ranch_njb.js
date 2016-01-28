@@ -8,6 +8,7 @@ $(document).ready(function() {
       $("label[for='userMobileNumber']").html('Parent Mobile Number <abbr title="required">*</abbr>');
       $('#userMobileNumber').parent().next().text("Enter Parent's Cell Phone number all in a row here. No dashes or spaces");    
       
+      $('[data-id="player-info"]').text('Volunteer Activities');
       
       var strictHTML = $('.strict-payment').html();
       $('.strict-payment').parent().remove();

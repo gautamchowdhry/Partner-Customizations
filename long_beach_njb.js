@@ -7,7 +7,7 @@
       if (user_id) {
         var headers = {
           'accept': 'application/json',
-          'x-api-key': 'aa6eb26eed6cd7e821c0262888c270cf'
+          'x-api-key': '4fab8c54ba9d1af0691029175e5f8f8b'
           };
 
         var site_name = $('#lapi-site-name').val();
@@ -28,11 +28,11 @@
               }
            }
 
-           
+           // 2nd child and higher
             if (regCount >= 1) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $7</strong> on this registration.'
+              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $25 </strong> on this registration.'
               $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('app-sib-disc');
+              $('#discountCode').val('SD12');
               $("#discountCode").attr('readonly', true);
               $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
             }
@@ -53,4 +53,6 @@
 
 
 });
+
+
 

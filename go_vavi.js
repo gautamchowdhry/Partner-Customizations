@@ -45,6 +45,14 @@ $(document).ready(function() {
           }
        
        }
+       
+       
+     if(url.indexOf('/login') > -1){ 
+         
+         $('.form-btns').after('<p><strong>Don\'t have an account? Create your account <a href="/signup">here</a>.</strong></p>');
+         
+         
+         }
     
       
     

@@ -1,6 +1,7 @@
 $(document).ready(function() {    
 
     var divisions = {       
+'Registered Teams Test Tournament': ['11U (Capacity: 20 Teams)|82186','12U (Capacity: 24 Teams)|82187', '13U (Capacity: 32 Teams)|82195'],
 '2016 Bat For A Cure Tournament (13U - 18U)': ['13U|77214', '14U|77215', '15U|77216', '16U|77217' , '18U|77218'] , 
 '2016 BBH LI Spring Challenge Tournament (9U - 14U)': ['9U|77295', '10U|77296', '11U|77297', '12U|77298', '13U|77299', '14U|77300'] , 
 '2016 Pre Season Bash Tournament (9U - 14U)': ['9U|76695', '10U|76696', '11U|76697', '12U|76698', '13U|76699', '14U|76700'] , 
@@ -53,7 +54,7 @@ $(document).ready(function() {
         
         var html = $.map(lcns, function(lcn){
           // console.log('lcn: ' + lcn);
-          var divName = lcn.split('|')[0];
+          var divName = lcn.split('|')[0];          
           var divID =  lcn.split('|')[1];
           return '<option value="' + divID + '">' + divName + '</option>'}).join('');
         $divisions.html(html);
@@ -72,7 +73,7 @@ $(document).ready(function() {
           // Load Divisions
           tournament =  $('#tournament').find("option:selected").text(), lcns = divisions[tournament] || [];       
           html = $.map(lcns, function(lcn){
-            var divName = lcn.split('|')[0];
+            var divName = lcn.split('|')[0];            
             var divID =  lcn.split('|')[1];
             return '<option value="' + divID + '">' + divName + '</option>'}).join('');
           $divisions.html(html);
@@ -87,8 +88,12 @@ $(document).ready(function() {
 
 function lookup()   {
 
+ $('#list').empty();
+ $('#hline').remove();
+
   var programID = $('#division').val();
-  var divisionName = $('#division option:selected').text();
+  var divisionName_cap = $('#division option:selected').text();
+  var divisionName_list = divisionName_cap.split('(')[0];
   
   var teamList = [];
   
@@ -103,7 +108,7 @@ function lookup()   {
           //console.log( index + ": " + $(this).text() );
           
            var name = $(this).find('dt a').text();
-           var division = divisionName; //$(this).find('dd.la--division__name.entity-meta').text();
+           var division = divisionName_list; //$(this).find('dd.la--division__name.entity-meta').text();
            var location = $(this).find('dd.entity-meta:not(.la--division__name)').text();
           
            console.log(name);
@@ -117,7 +122,11 @@ function lookup()   {
         });
     
         
-      $('#list').empty();
+     
+      
+      var headline = '<span class="head">' + $('#tournament option:selected"').text() + '</span><br/>';
+      headline += '<span class="sub">' + divisionName_cap + "</span><br/>";
+      
       
       $.each(teamList, function( key, value ) {                    
           $('#list').append('<span class="teamName">' + parseInt(key+1) + '. ' + value.name + '</span><br/>');
@@ -130,12 +139,18 @@ function lookup()   {
           
         });        
         
+        var txt = $('#list').text();       
+        var regCount =  txt.split("*").length - 1;
+        headline += '<span class="sub">' + regCount +  ' Paid and Reserved Teams</span>';
+        
+         $('#list').before('<p id="hline">' + headline + '</p>');
     });
     
 }
 
 $(document).ajaxStart(function(){
     $('#list').empty();
+    $('#hline').remove();
     $("#wait").css("display", "block");
 });
 

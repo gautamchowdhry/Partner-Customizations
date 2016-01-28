@@ -60,7 +60,7 @@ $(document).ready(function() {
       
       $('[data-id="discount-code"]').text('Chase Discount');
       $('[data-id="discount-code"]').after('<img src="//files.staticleagueapps.com/partners/msg/chase-rangers.jpg"/><br/><span class="microcopy full">Secure your child\'s 2016 Youth Hockey Camp spot with your Chase Credit or Debit Card and receive a $50 discount off admission & a limited edition Camp apparel item. Not a Chase Cardmember? Go to <a href="http://chase.com/msg" target="_blank">chase.com/msg</a> to find the card that\'s right for you.</span><br/>')     
-      $('[data-id="discount-text"]').find('small').html('Please enter the first six digits of your <b>Chase credit card</b> to receive your discount.<br/><img src="//files.staticleagueapps.com/partners/msg/credit-card.png"/>');  
+      $('[data-id="discount-text"]').find('small').html('Please enter the first six digits of your <b>Chase credit card</b> to receive your discount.');  
  
    }
   
