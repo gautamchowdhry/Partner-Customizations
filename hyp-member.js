@@ -18,42 +18,74 @@
           cache:false,
           headers: headers
         }).done(function (data) {
-        
+            
             var regCount = 0;
             for (var i = 0, len = data.length; i < len; i++) {
               var reg = data[i];                            
               if (reg.programState != 'COMPLETED' && reg.userType == 'ADULT') { 
                 // check membership programs
                 if (reg.programId == '25292' || reg.programId == '51886' || reg.programId == '25293'  || reg.programId == '25294' || reg.programId == '25295' ) {                 
-                  regCount++;                  
+                  regCount++;          
+                    
                 }
                 
               }
            }
+           
 
-         // only test on 1 program 
-         if(url.indexOf('bid=63178') > -1){           
-            // if dodgeball flag football or kickball - $15 off
-            // sand volleyball or ulitmate frisbee - $10 off
-            
-            //only doing one program at this time, which is dodgeball - 
-            if (regCount >= 1) {
-              var newText = 'Congrats, you have qualified for the <b>member discount!</b> You will receive $15 off of this program'
+         // Test program gets 100% off
+         if(url.indexOf('bid=78434') > -1 || $('[name="bid"]').val() == '78434'){           
+            if (regCount >= 1) {             
+              var newText = 'Congrats, you have qualified for the <b>member discount!</b> You will receive 100% off of this program'
               $('[data-id="discount-text"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('hyp15discount');
+              $('#discountCode').val('AbcDefGhijkLM987654');
               $("#discountCode").attr('readonly', true);
               $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");  
                             
-              $('[data-id="discount-text"]').hide(); // hide headline, input and microcopy
-                                   
-            }
-            
-            
-            
-            
-            
-            
+              $('[data-id="discount-text"]').hide(); // hide headline, input and microcopy                     
+            }  
           }
+          
+          
+         // Ultimate Gets $10 off - 69270
+         if(url.indexOf('bid=69270') > -1 || $('[name="bid"]').val() == '69270'){           
+            if (regCount >= 1) {             
+              var newText = 'Congrats, you have qualified for the <b>member discount!</b> You will receive $10 off of this program'
+              $('[data-id="discount-text"]').after('<div class="participant-headsup">' +newText + '</span>');
+              $('#discountCode').val('hypmemUltimate10');
+              $("#discountCode").attr('readonly', true);
+              $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");  
+                            
+              $('[data-id="discount-text"]').hide(); // hide headline, input and microcopy                     
+            }  
+          }
+                    
+         // Sand Volleyball Gets $10 off - 69268
+         if(url.indexOf('bid=69268') > -1 || $('[name="bid"]').val() == '69268'){           
+            if (regCount >= 1) {             
+              var newText = 'Congrats, you have qualified for the <b>member discount!</b> You will receive $10 off of this program'
+              $('[data-id="discount-text"]').after('<div class="participant-headsup">' +newText + '</span>');
+              $('#discountCode').val('hypmemSand10');
+              $("#discountCode").attr('readonly', true);
+              $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");  
+                            
+              $('[data-id="discount-text"]').hide(); // hide headline, input and microcopy                     
+            }  
+          }
+          
+        // Flag Football Gets $15 off - 79225
+         if(url.indexOf('bid=79225') > -1 || $('[name="bid"]').val() == '79225'){           
+            if (regCount >= 1) {             
+              var newText = 'Congrats, you have qualified for the <b>member discount!</b> You will receive $15 off of this program'
+              $('[data-id="discount-text"]').after('<div class="participant-headsup">' +newText + '</span>');
+              $('#discountCode').val('AbcDefGhijkLM987654');
+              $("#discountCode").attr('readonly', true);
+              $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");  
+                            
+              $('[data-id="discount-text"]').hide(); // hide headline, input and microcopy                     
+            }  
+          }
+          
            
             
           }).fail(function (data) {

@@ -7,7 +7,7 @@
       if (user_id) {
         var headers = {
           'accept': 'application/json',
-          'x-api-key': '949961929d4e11ccd89c95fa85acdb5a'
+          'x-api-key': 'faa67205d98ae9ea662884dbba2efafa'
           };
 
         var site_name = $('#lapi-site-name').val();
@@ -16,7 +16,7 @@
       
         $.ajax(site_url + '/users/' + user_id + '/registrations', {
           dataType: 'json',
-          cache: false,
+          cache:false,
           headers: headers
         }).done(function (data) {
         
@@ -28,25 +28,14 @@
               }
            }
 
-           //2nd registration
-            if (regCount == 1) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $65</strong> on this registration.'
+           // 2nd child and higher
+            if (regCount >= 1) {
+              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $10 </strong> on this registration.'
               $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('2ndChildDiscount');
+              $('#discountCode').val('sibling');
               $("#discountCode").attr('readonly', true);
               $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
             }
-            
-            //3rd registration and highter
-            if (regCount >= 2) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $115</strong> on this registration.'
-              $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('3rdChildDiscount');
-              $("#discountCode").attr('readonly', true);
-              $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
-            }
-            
-       
            
             
           }).fail(function (data) {
@@ -64,4 +53,6 @@
 
 
 });
+
+
 

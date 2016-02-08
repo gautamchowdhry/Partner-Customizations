@@ -7,7 +7,7 @@
       if (user_id) {
         var headers = {
           'accept': 'application/json',
-          'x-api-key': '949961929d4e11ccd89c95fa85acdb5a'
+          'x-api-key': '2bc49182f5e2b8d9cee16559d0b3304f'
           };
 
         var site_name = $('#lapi-site-name').val();
@@ -16,7 +16,7 @@
       
         $.ajax(site_url + '/users/' + user_id + '/registrations', {
           dataType: 'json',
-          cache: false,
+          cache:false,
           headers: headers
         }).done(function (data) {
         
@@ -28,25 +28,14 @@
               }
            }
 
-           //2nd registration
-            if (regCount == 1) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $65</strong> on this registration.'
+           // only 3rd child is free.  Everyone else is full price
+            if (regCount == 2 ) {
+              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>. This registration is free.'
               $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('2ndChildDiscount');
+              $('#discountCode').val('eyblthirdchildfree!');
               $("#discountCode").attr('readonly', true);
               $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
             }
-            
-            //3rd registration and highter
-            if (regCount >= 2) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $115</strong> on this registration.'
-              $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('3rdChildDiscount');
-              $("#discountCode").attr('readonly', true);
-              $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
-            }
-            
-       
            
             
           }).fail(function (data) {
@@ -64,4 +53,6 @@
 
 
 });
+
+
 
