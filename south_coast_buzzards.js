@@ -7,7 +7,7 @@
       if (user_id) {
         var headers = {
           'accept': 'application/json',
-          'x-api-key': '7641264b338e8514163f073c7eefafb0'
+          'x-api-key': '44ae4ce4cdf34f625913789a041f82be'
           };
 
         var site_name = $('#lapi-site-name').val();
@@ -16,23 +16,23 @@
       
         $.ajax(site_url + '/users/' + user_id + '/registrations', {
           dataType: 'json',
-          cache: false, 
+          cache:false,
           headers: headers
         }).done(function (data) {
         
             var regCount = 0;
             for (var i = 0, len = data.length; i < len; i++) {
               var reg = data[i];                            
-              if (reg.programState == 'UPCOMING' && reg.userType == 'CHILD') {                
+              if (reg.programState != 'COMPLETED' && reg.userType == 'CHILD') {                
                 regCount++;                
               }
            }
 
-           
+           // 2nd child and higher
             if (regCount >= 1) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $15</strong> on this registration.'
+              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save 50% </strong> on this registration.'
               $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('siblingbyya');
+              $('#discountCode').val('SCBLaxsib50');
               $("#discountCode").attr('readonly', true);
               $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
             }
@@ -53,4 +53,6 @@
 
 
 });
+
+
 

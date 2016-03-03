@@ -7,7 +7,7 @@
       if (user_id) {
         var headers = {
           'accept': 'application/json',
-          'x-api-key': '7641264b338e8514163f073c7eefafb0'
+          'x-api-key': 'XXXXXXXXXXXXXXX'
           };
 
         var site_name = $('#lapi-site-name').val();
@@ -16,23 +16,23 @@
       
         $.ajax(site_url + '/users/' + user_id + '/registrations', {
           dataType: 'json',
-          cache: false, 
+          cache:false,
           headers: headers
         }).done(function (data) {
         
             var regCount = 0;
             for (var i = 0, len = data.length; i < len; i++) {
               var reg = data[i];                            
-              if (reg.programState == 'UPCOMING' && reg.userType == 'CHILD') {                
+              if (reg.programState != 'COMPLETED' && reg.userType == 'ADULT') {                
                 regCount++;                
               }
            }
 
-           
-            if (regCount >= 1) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $15</strong> on this registration.'
+           // Only 2nd registrtaions
+            if (regCount == 1) {
+              var newText = 'Congratulations. You qualify for our <strong>multi player  discount</strong>.  You\'ll <strong>save $50 </strong> on this registration.'
               $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('siblingbyya');
+              $('#discountCode').val('league2');
               $("#discountCode").attr('readonly', true);
               $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
             }
@@ -53,4 +53,6 @@
 
 
 });
+
+
 

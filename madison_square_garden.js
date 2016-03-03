@@ -36,6 +36,8 @@ $(document).ready(function() {
     // add custom text to signup page
    if(url.indexOf('/registration?') > -1){   
    
+    $('.pp-details').find('strong').first().text('Pay all registration fees now');
+   
     var txt2 = 'By creating an account, you agree to (i) the <a href="http://leagueapps.com/terms/" target="_blank">Terms of Service and Privacy Policy</a> of LeagueApps and (ii) the <a href="http://www.themadisonsquaregardencompany.com/terms.html" target="_blank">Terms of Service</a> and <a href="http://www.themadisonsquaregardencompany.com/privacy.html" target="_blank">Privacy Policy</a> of MSG Sports & Entertainment, LLC.';
     
      $('.fine-print:contains("terms")').html(txt2);     

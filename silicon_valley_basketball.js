@@ -37,7 +37,7 @@ $(document).ready(function() {
      if(url.indexOf('/registration') > -1){       
         $('#up-front-payment-details').hide(); //desktop
         $('#pp-option').find("p:first").hide(); // deskttop 
-        $('#pay-all').find("p:first").text('Preformed Team (PF) Player - Have Uniform ($125)');
+        $('#pay-all').find("p:first").text('Performed Team (PF) "NEED UNIFORM" ($185)');
         $('#installmentsRedqD').find("strong:first").text('I agree to Pay the Required Dues');
      }
      

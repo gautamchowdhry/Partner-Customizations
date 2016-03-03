@@ -47,14 +47,29 @@ $(document).ready(function() {
        }
        
        
-     if(url.indexOf('/login') > -1){ 
-         
+     if(url.indexOf('/login') > -1){          
          $('.form-btns').after('<p><strong>Don\'t have an account? Create your account <a href="/signup">here</a>.</strong></p>');
-         
-         
+                  
          }
-    
-      
-    
+         
+         
+     if(url.indexOf('/registration') > -1){                     
+     $('small:contains(" please enter your mobile phone number here")').text('Enter your cell phone number for last minute schedule changes, postponements and weather updates.');
+     $('#userMobileNumber').attr('placeholder', 'Numbers only, no dashes, spaces or special characters.')
      
+            
+    }
+    
+});
+
+
+$(document).ajaxComplete(function(){
+    if($('.rescheduled').length != 0) {
+       $('.rescheduled .meta').css('text-decoration','line-through');
+       
+        if($('#is-mobile').length){
+         $('.rescheduled .meta').css('color','red');
+          $('a:contains("Rescheduled")').css('color', 'red');
+        }
+    }
 });

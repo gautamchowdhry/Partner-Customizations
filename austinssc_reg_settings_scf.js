@@ -44,7 +44,7 @@ $(document).ready(function() {
    
    //update partial payments message
    if(url.indexOf('/purchase') > -1){                
-     var newText = 'The amount shown is your total team fee if paid completely online.<br/>Only $200 is due now in order to secure your team\'s place in the league.You can avoid convenience fees by paying your remaining balance with cash or check at the pre-season t-shirt handout event. If choosing this option, you will be emailed updated balance information prior to the handout event.';                      
+     var newText = 'The amount shown is your total team fee. <br/>Only $200 is due now in order to secure your team\'s place in the league as well as pricing for the number of players indicated in your registration. If you wish to pay the balance with cash or check, you may do so only at the pre-season t-shirt handout event. You may pay your balance online with a credit card at any time. Cash and checks are not accepted at venues on gamedays. <br/><br/>An email with league information, handout event details, and confirmation of your team balance will be sent 2-3 business days prior to the handout event.';                      
      
       $("td:contains('partial payment is permitted')").html('<div style="text-align:left;padding-left:2px" id="cap-msg">' + '<h4 style="text-align:left;padding-left:2px"><strong>Attention Captain</strong></h4>'+ newText + '</div>');
                 

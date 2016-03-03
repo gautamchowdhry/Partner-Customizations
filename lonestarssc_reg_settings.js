@@ -24,53 +24,12 @@ $(document).ready(function() {
       $('[data-id="roster-summary"]').hide();  // hide roster   
    }    
    
-   //update partial payments message
-   if(url.indexOf('/purchase') > -1){          
-   
-      var newText;          
-      
-      var sport = $('.item:eq(1)').find("strong").text(); // get the second item which contains the sport
-      sport = sport.toLowerCase();
-      //alert(sport);      
-      
-      if (sport.indexOf("basketball") > -1) {        
-        newText = 'If you wish to pay in full, please change the "Amount to Pay\ box to your team\'s total. For up to 5 players it will be $244.75 ($235 + $9.75 transaction charge), and for each additional player over 5, please add $48.95. With a full payment, the "team down payment" is not necessary.';        
-      }
-      else if(sport.indexOf("indoor soccer") > -1 ) {
-          newText = 'If you wish to pay in full, please change the "Amount to Pay" box to your team\'s total. For 7 players it will be $349.65 ($336 + $13.65 transaction charge), and for each additional player over 7, please add $49.95. With a full payment, the team down payment is not necessary.';
-      }
-      else if(sport.indexOf("tennis") > -1 ) {
-          newText = 'If you wish to pay in full, please change the "Amount to Pay" box to your team\'s total. For up to 6 players it will be $305.70 ($294 + $11.70 transaction charge), and for each additional player over 6, please add $50.95. With a full payment, the "team down payment" is not necessary.';
-      }
-          
-      else if(sport.indexOf("bowling") > - 1) {
-          newText = 'If you wish to pay in full, please change the "Amount to Pay" box to your team\'s total. For 5 players it will be $334.75 ($325 + $9.75 transaction charge).  With a full payment, the "team down payment" is not necessary.';
-      }
-      
-      else if (sport.indexOf("ultimate") > - 1 || sport.indexOf("wiffleball") > - 1) {        
-          newText = 'If you wish to pay in full, please change the "Amount to Pay" box to your team\'s total. For up to 11 players it will be $475.20 ($453.75 + $21.45 transaction charge), and for each additional player over 11, please add $43.20. With a full payment, the "team down payment" is not necessary.';
-          }     
-      
-      else if (sport.indexOf("dodgeball") > - 1 || sport.indexOf("kickball") > - 1 ||
-      sport.indexOf("soccer") > - 1 || sport.indexOf("softball") > - 1 ||
-      sport.indexOf("flag football") > - 1 || sport.indexOf("sunday funday") > - 1 ) {           
-          newText = 'If you wish to pay in full, please change the "Amount to Pay" box to your team\'s total. For up to 12 players it will be $518.40 ($495 + $23.40 transaction charge), and for each additional player over 12, please add $43.20. With a full payment, the "team down payment" is not necessary.';      
-      }
-      
-      
-      else if (sport.indexOf("indoor volleyball") > - 1 || sport.indexOf("6s") > - 1 || sport.indexOf("arena volleyball") > - 1) {        
-          newText = 'If you wish to pay in full, please change the "Amount to Pay" box to your team\'s total. For up to 9 players it will be $413.55 ($396 + $17.55 transaction charge), and for each additional player over 9, please add $45.95. With a full payment, the "team down payment" is not necessary.';
-          }     
-      
-      else if (sport.indexOf("4s") > - 1) {        
-          newText = 'If you wish to pay in full, please change the "Amount to Pay" box to your team\'s total. For up to 6 players it will be $287.70 ($276 + $11.70 transaction charge), and for each additional player over 6, please add $47.95. With a full payment, the "team down payment" is not necessary.';
-          }     
-            
-     $("td:contains('partial payment is permitted')").html("<h4 style='text-align:left;padding-left:8px'>Attention Captain</h4>" + newText);
-      //alert('done2');
-      
-      
-      
+    //update partial payments message
+   if(url.indexOf('/purchase') > -1){                
+     var newText = 'The amount shown is your total team fee. <br/>Only $200 is due now in order to secure your team\'s place in the league as well as pricing for the number of players indicated in your registration. If you wish to pay the balance with cash or check, you may do so only at the pre-season t-shirt handout event. You may pay your balance online with a credit card at any time. Cash and checks are not accepted at venues on gamedays. <br/><br/>An email with league information, handout event details, and confirmation of your team balance will be sent 2-3 business days prior to the handout event.';                      
+     
+      $("td:contains('partial payment is permitted')").html('<div style="text-align:left;padding-left:2px" id="cap-msg">' + '<h4 style="text-align:left;padding-left:2px"><strong>Attention Captain</strong></h4>'+ newText + '</div>');
+                
       var args = document.location.search.substring(1).split('&type=')
       var type = args[1];      
       
@@ -78,7 +37,8 @@ $(document).ready(function() {
         {
           $("#amount").attr('readonly', true);
           $("#amount").attr("style", "background: #CCC; color: #333;border: 1px solid #666");
-          $(".subtotal.less-top").hide();
+          $(".subtotal.less-top").hide(); //desktop hide partial payment message
+          $("#cap-msg").hide(); //mobile hide partial payment message
           
         }
   }
