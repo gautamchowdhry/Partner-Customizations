@@ -7,7 +7,7 @@
       if (user_id) {
         var headers = {
           'accept': 'application/json',
-          'x-api-key': '222b7839963ec27e7a484bc483dbca90'
+          'x-api-key': '95dbe0837fc66ed481077e442627a00e'
           };
 
         var site_name = $('#lapi-site-name').val();
@@ -16,23 +16,23 @@
       
         $.ajax(site_url + '/users/' + user_id + '/registrations', {
           dataType: 'json',
-          cache: false, 
+          cache:false,
           headers: headers
         }).done(function (data) {
         
             var regCount = 0;
             for (var i = 0, len = data.length; i < len; i++) {
               var reg = data[i];                            
-              if (reg.programState != 'COMPLETED' && reg.userType == 'CHILD' &&  reg.programType == 'LEAGUE') {                
+              if (reg.programState != 'COMPLETED' && reg.userType == 'CHILD') {                
                 regCount++;                
               }
            }
 
-           
+           // 2nd child and higher
             if (regCount >= 1) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $10</strong> on this registration.'
+              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save 10%</strong> on this registration.'
               $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('Hot4laxfamdiscount');
+              $('#discountCode').val('FAMILYDISC');
               $("#discountCode").attr('readonly', true);
               $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
             }
@@ -53,4 +53,6 @@
 
 
 });
+
+
 

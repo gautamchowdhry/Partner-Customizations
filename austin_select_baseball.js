@@ -1,8 +1,14 @@
- $(document).ready(function() {  
+$(document).ready(function() {  
+
   var url = $(location).attr('href');  
+  if(url.indexOf('/dashboard') > -1){  
   
-    if(url.indexOf('/events') > -1){    
-     /*
+ 
+      //show program image
+      if(url.indexOf('/tournaments') > -1){    
+      
+      /*
+    
       $("[id^='baseevent-']").each(function(){
           var li_id = $(this).attr('id'); 
           var prog_id = li_id.split('-')[1];
@@ -13,11 +19,14 @@
             
           }
         });
-      */    
+      */
     
       } 
-  
+     
+    
+
+
+
 
 
 });
-

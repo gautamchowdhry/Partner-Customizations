@@ -28,6 +28,7 @@ $(document).ready(function() {
       if(url.indexOf('/tournaments') > -1){    
     
       //show logo
+      /*
       $("[id^='baseevent-']").each(function(){
           var li_id = $(this).attr('id'); 
           var prog_id = li_id.split('-')[1];
@@ -38,6 +39,8 @@ $(document).ready(function() {
             
           }
         });
+        */
+        
         
         //show link
         $("[id^='baseevent-']").each(function(){

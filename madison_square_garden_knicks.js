@@ -39,8 +39,25 @@ $(document).ready(function() {
       $('[data-id="waiver"]').find('h2').text('Acknowledgment & Release');    
       
       $('[data-id="discount-code"]').text('Chase Discount');
-      $('[data-id="discount-code"]').after('<img src="//files.staticleagueapps.com/partners/msg/chase-rangers.jpg"/><br/><span class="microcopy full">Secure your child\'s spot with your Chase Credit or Debit Card and receive a $50 discount off admission. Not a Chase Cardmember? Go to <a href="http://chase.com/msg" target="_blank">chase.com/msg</a> to find the card that\'s right for you.</span><br/>')     
+      $('[data-id="discount-code"]').after('<img src="//svite-league-apps-content.s3.amazonaws.com/6970/8356/b8274dbd-6bf0-4db0-8191-1d1271ad5ff5.png"/><br/><span class="microcopy full">Secure your child\'s spot with your Chase Credit or Debit Card and receive a $50 discount off admission. Not a Chase Cardmember? Go to <a href="http://chase.com/msg" target="_blank">chase.com/msg</a> to find the card that\'s right for you.</span><br/>')     
       $('[data-id="discount-text"]').find('small').html('Please enter the first six digits of your <b>Chase credit card</b> to receive your discount.');  
+      
+      
+      var pageTitle = ''
+      if($('#is-mobile').length){
+         // mobile
+         pageTitle = $('#up-front-payment-details').text();
+      }     
+      else {
+          //desktop
+          pageTitle = $('[data-id="reg-terms"]').text();
+      }
+            
+     if (pageTitle.toLowerCase().indexOf("event") > -1) {
+        $('[data-id="discount-text"]').hide(); // hide headline, input and microcopy  
+        $('hr.s.less-bot').hide();
+     }
+
  
    }
   

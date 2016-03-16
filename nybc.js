@@ -6,7 +6,8 @@ $(document).ready(function() {
    
       $("dt.program-list-starts:gt(0)").hide();
       $("dd.program-list-starts:gt(0)").hide();
-          
+       
+      /*   
       $("[id^='baseevent-']").each(function(){
           var li_id = $(this).attr('id'); 
           var prog_id = li_id.split('-')[1];
@@ -16,6 +17,7 @@ $(document).ready(function() {
             $('#' + li_id).prepend(img);            
           }
         });
+       */
               
       } 
       

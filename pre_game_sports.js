@@ -3,6 +3,8 @@ $(document).ready(function() {
   var url = $(location).attr('href');    
   //show program image
   if(url.indexOf('/tournaments') > -1){    
+  
+  /*
 
   $("[id^='baseevent-']").each(function(){
       var li_id = $(this).attr('id'); 
@@ -14,7 +16,7 @@ $(document).ready(function() {
         
       }
     });
-      
+  */
 
   } 
      

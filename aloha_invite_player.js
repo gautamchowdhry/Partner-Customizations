@@ -34,7 +34,7 @@ $(document).ready(function() {
   
       //show program image
       if(url.indexOf('/tournaments') > -1){    
-    
+      /*
       $("[id^='baseevent-']").each(function(){
           var li_id = $(this).attr('id'); 
           var prog_id = li_id.split('-')[1];
@@ -45,7 +45,7 @@ $(document).ready(function() {
             
           }
         });
-          
+       */   
     
       } 
       

@@ -6,7 +6,7 @@ $(document).ready(function() {
     $('[data-id="waiver"]').find('h2').text('Dodgers RBI Waiver & Medical Release');     
     $("label[for='userMobileNumber']").html('Text Message Update Number <abbr title="required">*</abbr>');     
     
-     $('[data-id="player-info"]').after('<span class="microcopy full">Please answer the following questions about your child:</span><br/>');  
+     $('[data-id="player-info"]').after('<span class="microcopy full"><h2>Please answer the following questions about your child:</h2></span><br/>');  
      $('[data-id="player-info"]').css('margin-bottom', '0px');       
    }
 

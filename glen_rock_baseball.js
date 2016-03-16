@@ -1,81 +1,74 @@
- $(document).ready(function() {  
+$(document).ready(function() {  
   var url = $(location).attr('href');  
-  
+    
+    // append count to register another child link
+    if(url.indexOf('/purchase?') > -1){      
+      var regCount = $('#registrations tbody tr').length;;
+      var href = $('#another').attr('href');
+      var qstring = '&rCount=' + regCount;
+      $('#another').attr('href', href + qstring);
+      $("a:contains('another registration?')").attr('href', href + qstring);
+      }
+
+    // if there are more registration, set count value
+     if(url.indexOf('/registration/context') > -1){   
+      var queryString = window.location.search;
+      var regCount = queryString.split('&rCount=')[1];
+      sessionStorage.setItem('rCount', regCount);
+     }
+     
+      //retrieve count value, if more than 1 reg, show discount code
     if(url.indexOf('/registration?bid=') > -1){ 
-      var user_id = $('#lapi-user-id').val();
-
-      if (user_id) {
-        var headers = {
-          'accept': 'application/json',
-          'x-api-key': '172cfe00f59f8314865704273853e46b'
-          };
-
-        var site_name = $('#lapi-site-name').val();
-        var site_url = $('#lapi-base-url').val() + '/v1/sites/' + site_name;
-  
+      var regCount =sessionStorage.getItem('rCount');      
+      if (regCount){
       
-        $.ajax(site_url + '/users/' + user_id + '/registrations', {
-          dataType: 'json',
-          cache:false,
-          headers: headers
-        }).done(function (data) {
+        // 2nd registration
+        if (regCount == 1) {          
+          var newText = 'Congratulations. You qualify for our <strong>two player sibling discount</strong>.  You\'ll <strong>save $10</strong> on this registration.'
+          $("h2:contains('Discount Code')").after('<div class="participant-headsup">' +newText + '</span>');
+          $('#discountCode').val('GRBSA2nd');
+          $("#discountCode").attr('readonly', true);
+          $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");
+        }  
         
-            var regCount = 0;
-            for (var i = 0, len = data.length; i < len; i++) {
-              var reg = data[i];                            
-              if (reg.programState != 'COMPLETED' && reg.userType == 'CHILD') {                
-                regCount++;                
-              }
-           }
-
-           // 2nd child and higher
-            if (regCount == 1) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $10 </strong> on this registration.'
-              $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('GRBSA2nd');
-              $("#discountCode").attr('readonly', true);
-              $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
-            }
-            
-             if (regCount == 2) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $35 </strong> on this registration.'
-              $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('GRBSA3rd');
-              $("#discountCode").attr('readonly', true);
-              $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
-            }
-           
-             if (regCount >= 3) {
-              var newText = 'Congratulations. You qualify for our <strong>multi player sibling discount</strong>.  You\'ll <strong>save $85 </strong> on this registration.'
-              $('[data-id="discount-code"]').after('<div class="participant-headsup">' +newText + '</span>');
-              $('#discountCode').val('GRBSA4+');
-              $("#discountCode").attr('readonly', true);
-              $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");                       
-            }
-            
-          }).fail(function (data) {
-            // I guess we don't really care if it fails
-            //console.log('failure querying registrations');
-           
-          });
-   
-    
-    
-      } // close if User_id
-    
-    } // close if registration page
+        //3rd registration     
+        
+        if (regCount == 2) {          
+          var newText = 'Congratulations. You qualify for our <strong>three player sibling discount</strong>.  You\'ll <strong>save $35</strong> on this registration.'
+          $("h2:contains('Discount Code')").after('<div class="participant-headsup">' +newText + '</span>');
+          $('#discountCode').val('GRBSA3rd');
+          $("#discountCode").attr('readonly', true);
+          $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");
+        }  
+        
+        // 4th 
+        if (regCount >= 3) {          
+          var newText = 'Congratulations. You qualify for our <strong>multi-player sibling discount</strong>. You\'ll <strong>save $85</strong> on this registration.'
+          $("h2:contains('Discount Code')").after('<div class="participant-headsup">' +newText + '</span>');
+          $('#discountCode').val('GRBSA4+');
+          $("#discountCode").attr('readonly', true);
+          $("#discountCode").attr("style", "background: #CCC; color: #333;border: 1px solid #666");
+        }  
+        
+        
   
-
+        
+        
+        
+        
+        
+        
+        
+        
+      }
+    } 
+     
+      
+  
+  
+    
 
 });
-
-
-
-
-
-
-
-
 
 
 

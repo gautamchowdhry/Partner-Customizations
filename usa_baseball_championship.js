@@ -2,7 +2,7 @@
   var url = $(location).attr('href');  
   
     if(url.indexOf('/tournaments') > -1){    
-    
+      /*
       $("[id^='baseevent-']").each(function(){
           var li_id = $(this).attr('id'); 
           var prog_id = li_id.split('-')[1];
@@ -13,7 +13,7 @@
             
           }
         });
-          
+       */
     
       } 
       

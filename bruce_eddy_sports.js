@@ -1,6 +1,6 @@
 $(document).ready(function() {  
   
-  //update Products Step in Reg Flow to be Called Volunteer....
+  //update Products Step in Reg Flow to be Called Volunteer
   $("strong.step-name:contains('Products')").text("Fundraising");
   
   var url = $(location).attr('href');         
@@ -28,8 +28,9 @@ $(document).ready(function() {
               }                         
             });            
                               
-     }     
-              
+     }
+          
+    
      if(url.indexOf('/purchase') > -1){     
         $('[data-id^="remove-item"]').hide(); //  hide remove option
      }

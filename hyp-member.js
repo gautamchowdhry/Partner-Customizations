@@ -32,11 +32,12 @@
               }
            }
            
+           
 
          // Test program gets 100% off
          if(url.indexOf('bid=78434') > -1 || $('[name="bid"]').val() == '78434'){           
             if (regCount >= 1) {             
-              var newText = 'Congrats, you have qualified for the <b>member discount!</b> You will receive 100% off of this program'
+              var newText = 'Congrats, you have qualified for the <b>member discount!</b> You will receive 100%off of this program'
               $('[data-id="discount-text"]').after('<div class="participant-headsup">' +newText + '</span>');
               $('#discountCode').val('AbcDefGhijkLM987654');
               $("#discountCode").attr('readonly', true);
